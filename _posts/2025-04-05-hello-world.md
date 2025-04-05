@@ -8,7 +8,7 @@ render_with_liquid: false
 ---
 
 ## Witam wszystkich!
-Jestem Ewewerban, a to jest pierwszy wpis na mojej stronie.
+Jestem **Ewewerban**, a to jest pierwszy wpis na mojej stronie.
 
 
 Do zobaczenia niedługo!
