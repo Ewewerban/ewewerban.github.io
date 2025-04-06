@@ -1,7 +1,7 @@
 ---
 title: Odwiedziny
 author: Ewewerban
-date: 2025-04-06 16:00:00 +0000
+date: 2025-04-06 10:00:00 +0000
 categories: [Ogólne]
 tags: [MTG, Cards]
 render_with_liquid: false
