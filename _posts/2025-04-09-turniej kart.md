@@ -15,5 +15,5 @@ Poniżej pokażę wam listę graczy (tabelę)
 3. Ja
 4. Gustaw.
  
-###Zdobyliśmy z tatą karty a najdroższa kosztowała 20 złotych.
+Zdobyliśmy z tatą karty a najdroższa kosztowała 20 złotych.
 **Do zobaczenia!** 😊
