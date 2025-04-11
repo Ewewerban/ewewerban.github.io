@@ -12,3 +12,4 @@ Jestem **Ewewerban**, a to jest pierwszy wpis na mojej stronie.
 
 
 Do zobaczenia niedługo!
+PS. Dziękuję dla [Chirpy](https://chirpy.cotes.page/) za możliwość zrobienia tej strony, oraz dla [Brathaneq](https://brathaneq.github.io/) za pomoc w zrobieniu tej strony. 😊
