@@ -223,5 +223,5 @@ jekyll-archives:
     category: category
     tag: tag
   permalinks:
-    tag: /tags/:name/
+    tag: /tagi/:name/
     category: /categories/:name/
