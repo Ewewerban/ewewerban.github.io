@@ -12,5 +12,5 @@ Na szczęście nie chciał, po prostu chciał wyjść. Ale coś tam na podwórku
 oblewała się wodą. Skutki były takie:
 * Wszyscy mokrzy (nawet ja)
 * Balonów na wodę (rozbiych) na ziemi cała masa
-* no i musiałem się szyblo wykąpać i **umyć buty**!
+* no i musiałem się szybko wykąpać i **umyć buty**!
 Ale wszystko dobrze się skończyło.
