@@ -1,7 +1,7 @@
 ---
 title: Komentarze
 author: Ewewerban
-date: 2025-05-03 18:47:13 +0000
+date: 2025-05-03 10:00:00 +0000
 categories: [Ogólne]
 tags: [github, strona, www]
 render_with_liquid: false
