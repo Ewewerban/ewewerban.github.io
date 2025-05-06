@@ -16,4 +16,8 @@ render_with_liquid: false
 > Skoki w dal, a potem piłka nożna
 #### Jeszcze podczas jedzenia banana mi ząb wypadł.
 ## Godzina wychowawcza
-> Nudy na pudy
+> Sprawy klasowe
+> Kończenie filmu
+## Religia
+> Odwołana
+# Do zobaczenia w nasyępnym poście 😃😀
