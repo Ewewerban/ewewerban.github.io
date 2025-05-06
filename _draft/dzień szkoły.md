@@ -1,5 +1,5 @@
 ---
-title: Dzień szkolny
+title: Dzień szkoły
 author: Ewewerban
 date: 2025-05-03 10:00:00 +0000
 categories: [Ogólne]
