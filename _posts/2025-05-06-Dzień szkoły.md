@@ -19,5 +19,5 @@ render_with_liquid: false
 > Sprawy klasowe i kończenie filmu
 ## Religia
 > Odwołana
-# Do zobaczenia w nasyępnym poście 😃😀
+# Do zobaczenia w następnym poście 😃😀
 PS Jeszcze dzisiaj jadę na turniej MTG 😎
