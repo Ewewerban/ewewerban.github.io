@@ -8,4 +8,9 @@ render_with_liquid: false
 ---
 # Siemka!
 ### Dzisiaj opowiem wam o moim dniu w szkole.
-# Lekcja Polskiego
+## Lekcja Polskiego:
+> omawianie lektury "Ania z Zielonego Wzgórza 
+## Matematyka
+> mnożenie ułamków dziesiętnych przez ułamki dziesiętne
+## Dwa wf-u (bo jestem w klasie sportowej
+>
