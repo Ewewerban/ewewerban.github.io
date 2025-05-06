@@ -1,7 +1,7 @@
 ---
 title: Dzień szkoły
 author: Ewewerban
-date: 2025-05-03 10:00:00 +0000
+date: 2025-05-06 10:00:00 +0000
 categories: [Ogólne]
 tags: [Życie autora ]
 render_with_liquid: false
@@ -16,8 +16,8 @@ render_with_liquid: false
 > Skoki w dal, a potem piłka nożna
 #### Jeszcze podczas jedzenia banana mi ząb wypadł.
 ## Godzina wychowawcza
-> Sprawy klasowe
-> Kończenie filmu
+> Sprawy klasowe i kończenie filmu
 ## Religia
 > Odwołana
 # Do zobaczenia w nasyępnym poście 😃😀
+PS Jeszcze dzisiaj jadę na turniej MTG 😎
