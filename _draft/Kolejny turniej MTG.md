@@ -6,4 +6,5 @@ categories: [Ogólne]
 tags: [Życie autora, MTG]
 render_with_liquid: false
 ---
-Cześć
+# Siema !
+Dzisiaj pojechaliśmy razem z [moim tatą](https://brathaneq.github.io) na turniej kart MTG
