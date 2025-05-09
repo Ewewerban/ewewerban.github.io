@@ -12,8 +12,10 @@ render_with_liquid: false
 Grę z High Tide wygrałem. 
 ### Na czym polega talia "High Tide Combo":
 ~~~~text~~
-Grając odpowiednie karty, robi combo na nieskończoną manę, gra kartę, że wybrany gracz (czyli przeciwnik)
- mieli, czyli przerzuca do grobu 60 kart, a potem rzuca zaklęcie,które sprawia że wybrany gracz ciągnie 2 karty.
+Grając odpowiednie karty, robi combo na nieskończoną manę, gra kartę
+, że wybrany gracz (czyli przeciwnik)
+ mieli, czyli przerzuca do grobu 60 kart, a potem rzuca zaklęcie,
+które sprawia że wybrany gracz ciągnie 2 karty.
  Gdy osoba nie ma jak dobrać karty, automatycznie przegrywa.
 ~~~~
 ### 2. Druga gra była z Czerwono - Niebieską talią, która od razu zniszczyła moje [wróżki](https://www.mtggoldfish.com/archetype/pauper-mono-blue-faeries-f7d232c7-2c3c-4459-b219-f3e8d9abbec6#paper) kartą [Breath Weapon](https://gatherer.wizards.com/pages/Card/Details.aspx?multiverseid=563048)
