@@ -12,5 +12,8 @@ render_with_liquid: false
 Grę z High Tide wygrałem. 
 ### Na czym polega talia "High Tide":
 ~~~~text~~
-Grając odpowiednie karty, robi combo na nieskończoną manę, gra kartę, że wybrany gracz (czyli przeciwnik) mieli, czyli przerzuca do grobu 60 kart, a potem rzuca zaklęcie,które sprawia że wybrany gracz ciągnie 2 karty. Gdy osoba nie ma jak dobrać karty, automatycznie przegrywa.
-~~
+Grając odpowiednie karty, robi combo na nieskończoną manę, gra kartę, że wybrany gracz (czyli przeciwnik)
+ mieli, czyli przerzuca do grobu 60 kart, a potem rzuca zaklęcie,które sprawia że wybrany gracz ciągnie 2 karty.
+ Gdy osoba nie ma jak dobrać karty, automatycznie przegrywa.
+~~~~
+
