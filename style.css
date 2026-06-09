@@ -1,0 +1,244 @@
+/* Reset podstawowych styli */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0d0905; /* Bardzo ciemny brąz/czarny */
+    /* Efekt poświaty/gradientu w tle, jak na screenie */
+    background-image: radial-gradient(circle at top right, rgba(214, 80, 15, 0.15), transparent 40%),
+                      radial-gradient(circle at 20% 30%, rgba(214, 80, 15, 0.05), transparent 50%);
+    background-attachment: fixed;
+    color: #e5e5e5;
+    line-height: 1.6;
+    padding: 0 20px;
+}
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+/* Górny pasek */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.logo {
+    font-size: 1.1rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo .dot {
+    width: 10px;
+    height: 10px;
+    background-color: #d6500f;
+    border-radius: 50%;
+}
+
+.logo .bold {
+    font-weight: 700;
+}
+
+.nav-links a {
+    color: #8c8c8c;
+    text-decoration: none;
+    font-size: 0.95rem;
+    margin-left: 20px;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+.nav-links .admin-link {
+    opacity: 0.4;
+}
+
+/* Sekcja Powitalna */
+.hero {
+    margin-bottom: 80px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+}
+
+.hero .highlight {
+    color: #f15a16; /* Żywy pomarańczowy */
+}
+
+.hero .description {
+    font-size: 1.2rem;
+    color: #a3a3a3;
+    max-width: 600px;
+    margin-bottom: 35px;
+    font-weight: 400;
+}
+
+/* Przyciski */
+.cta-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: #f15a16;
+    color: #000;
+}
+
+.btn-primary:hover {
+    background-color: #ff6b2b;
+}
+
+.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.03);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Sekcja Projekty */
+.section-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.section-title .slash {
+    color: #f15a16;
+}
+
+.project-count {
+    color: #737373;
+    font-family: monospace;
+    font-size: 0.95rem;
+}
+
+/* Karta Projektu */
+.project-card {
+    background-color: rgba(20, 15, 12, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: blur(10px);
+    transition: border-color 0.2s;
+}
+
+.project-card:hover {
+    border-color: rgba(241, 90, 22, 0.3);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.badge {
+    background-color: rgba(241, 90, 22, 0.1);
+    color: #f15a16;
+    padding: 6px 12px;
+    font-family: monospace;
+    font-size: 0.8rem;
+    border-radius: 6px;
+    border: 1px solid rgba(241, 90, 22, 0.2);
+}
+
+.arrow-icon {
+    color: #525252;
+    font-size: 1.1rem;
+}
+
+.card-title {
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.card-description {
+    color: #a3a3a3;
+    font-size: 1rem;
+    margin-bottom: 24px;
+}
+
+.card-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 16px;
+}
+
+.project-link {
+    color: #737373;
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.project-card:hover .project-link {
+    color: #a3a3a3;
+}
+
+/* Stopka */
+.footer {
+    margin-top: 100px;
+    text-align: center;
+    color: #525252;
+    font-size: 0.9rem;
+}
+
+/* Responsywność dla telefonów */
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    .cta-buttons {
+        flex-direction: column;
+    }
+    .btn {
+        text-align: center;
+    }
+}
