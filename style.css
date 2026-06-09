@@ -1,35 +1,37 @@
-/* Reset podstawowych styli */
+/* Resetowanie domyślnych marginesów przeglądarki */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Główne style ciała strony i ciemne tło z poświatą */
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #0d0905; /* Bardzo ciemny brąz/czarny */
-    /* Efekt poświaty/gradientu w tle, jak na screenie */
-    background-image: radial-gradient(circle at top right, rgba(214, 80, 15, 0.15), transparent 40%),
-                      radial-gradient(circle at 20% 30%, rgba(214, 80, 15, 0.05), transparent 50%);
+    background-color: #0c0805; /* Bardzo ciemny brąz/czerń */
+    /* Efekt pomarańczowego gradientu w tle */
+    background-image: radial-gradient(circle at top right, rgba(214, 80, 15, 0.13), transparent 45%),
+                      radial-gradient(circle at 15% 35%, rgba(214, 80, 15, 0.04), transparent 50%);
     background-attachment: fixed;
     color: #e5e5e5;
     line-height: 1.6;
     padding: 0 20px;
 }
 
+/* Główny kontener centrujący zawartość */
 .container {
-    max-width: 700px;
+    max-width: 750px;
     margin: 0 auto;
     padding-top: 40px;
     padding-bottom: 60px;
 }
 
-/* Górny pasek */
+/* Menu górne */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 80px;
+    margin-bottom: 90px;
 }
 
 .logo {
@@ -41,8 +43,8 @@ body {
 }
 
 .logo .dot {
-    width: 10px;
-    height: 10px;
+    width: 9px;
+    height: 9px;
     background-color: #d6500f;
     border-radius: 50%;
 }
@@ -64,33 +66,32 @@ body {
 }
 
 .nav-links .admin-link {
-    opacity: 0.4;
+    opacity: 0.35;
 }
 
-/* Sekcja Powitalna */
+/* Sekcja Powitalna (Hero) */
 .hero {
-    margin-bottom: 80px;
+    margin-bottom: 90px;
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-size: 3.2rem;
     font-weight: 800;
     color: #fff;
     line-height: 1.15;
     margin-bottom: 24px;
-    letter-spacing: -1px;
+    letter-spacing: -1.5px;
 }
 
 .hero .highlight {
-    color: #f15a16; /* Żywy pomarańczowy */
+    color: #f15a16;
 }
 
 .hero .description {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: #a3a3a3;
-    max-width: 600px;
+    max-width: 620px;
     margin-bottom: 35px;
-    font-weight: 400;
 }
 
 /* Przyciski */
@@ -106,7 +107,7 @@ body {
     font-weight: 600;
     text-decoration: none;
     border-radius: 10px;
-    transition: transform 0.2s, background-color 0.2s;
+    transition: transform 0.1s, background-color 0.2s;
 }
 
 .btn:active {
@@ -125,14 +126,14 @@ body {
 .btn-secondary {
     background-color: rgba(255, 255, 255, 0.03);
     color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .btn-secondary:hover {
     background-color: rgba(255, 255, 255, 0.08);
 }
 
-/* Sekcja Projekty */
+/* Tytuł sekcji Moje strony */
 .section-title-container {
     display: flex;
     justify-content: space-between;
@@ -141,9 +142,10 @@ body {
 }
 
 .section-title {
-    font-size: 2rem;
+    font-size: 2.1rem;
     font-weight: 700;
     color: #fff;
+    letter-spacing: -0.5px;
 }
 
 .section-title .slash {
@@ -151,23 +153,27 @@ body {
 }
 
 .project-count {
-    color: #737373;
+    color: #525252;
     font-family: monospace;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
-/* Karta Projektu */
+/* KARTA PROJEKTU - Dodano "position: relative" i "cursor: pointer" */
 .project-card {
-    background-color: rgba(20, 15, 12, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative; 
+    background-color: rgba(20, 15, 12, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.04);
     border-radius: 16px;
-    padding: 24px;
-    backdrop-filter: blur(10px);
-    transition: border-color 0.2s;
+    padding: 28px;
+    backdrop-filter: blur(12px);
+    transition: border-color 0.2s, background-color 0.2s;
+    cursor: pointer;
 }
 
+/* Efekt po najechaniu myszką na kartę */
 .project-card:hover {
-    border-color: rgba(241, 90, 22, 0.3);
+    border-color: rgba(241, 90, 22, 0.25);
+    background-color: rgba(25, 18, 14, 0.6);
 }
 
 .card-header {
@@ -178,22 +184,27 @@ body {
 }
 
 .badge {
-    background-color: rgba(241, 90, 22, 0.1);
+    background-color: rgba(241, 90, 22, 0.08);
     color: #f15a16;
     padding: 6px 12px;
     font-family: monospace;
     font-size: 0.8rem;
     border-radius: 6px;
-    border: 1px solid rgba(241, 90, 22, 0.2);
+    border: 1px solid rgba(241, 90, 22, 0.15);
 }
 
 .arrow-icon {
-    color: #525252;
-    font-size: 1.1rem;
+    color: #404040;
+    font-size: 1.2rem;
+    transition: color 0.2s;
+}
+
+.project-card:hover .arrow-icon {
+    color: #f15a16; /* Strzałka robi się pomarańczowa po najechaniu */
 }
 
 .card-title {
-    font-size: 1.4rem;
+    font-size: 1.45rem;
     color: #fff;
     font-weight: 700;
     margin-bottom: 12px;
@@ -202,7 +213,7 @@ body {
 .card-description {
     color: #a3a3a3;
     font-size: 1rem;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
 }
 
 .card-footer {
@@ -211,7 +222,7 @@ body {
 }
 
 .project-link {
-    color: #737373;
+    color: #666;
     text-decoration: none;
     font-family: monospace;
     font-size: 0.9rem;
@@ -222,23 +233,37 @@ body {
     color: #a3a3a3;
 }
 
-/* Stopka */
+/* KLUCZOWY ELEMENT: Rozciągnięcie linku na całą powierzchnię karty */
+.project-link.main-link::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1; 
+}
+
+/* Stopka strony */
 .footer {
-    margin-top: 100px;
+    margin-top: 120px;
     text-align: center;
-    color: #525252;
+    color: #404040;
     font-size: 0.9rem;
 }
 
-/* Responsywność dla telefonów */
+/* Dostosowanie do ekranów smartfonów */
 @media (max-width: 600px) {
     .hero h1 {
-        font-size: 2.2rem;
+        font-size: 2.3rem;
     }
     .cta-buttons {
         flex-direction: column;
     }
     .btn {
         text-align: center;
+    }
+    .header {
+        margin-bottom: 50px;
     }
 }
