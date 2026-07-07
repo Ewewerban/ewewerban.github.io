@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ewewerban - Home</title>
+    <!-- Loading Minecraft pixel font from Google Fonts -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <style>
+        /* General styling in Minecraft theme */
+        body {
+            background-color: #2c2c2c; /* Dark gray background like stone */
+            color: #ffffff;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 12px;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Main content container */
+        .container {
+            flex: 1;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #55ff55; /* Light green text color from Minecraft */
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px #000000;
+        }
+
+        p {
+            color: #aaaaaa;
+            text-shadow: 2px 2px #000000;
+        }
+
+        /* XP PROGRESS BAR STYLING */
+        .xp-container {
+            margin: 50px auto 20px auto;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .xp-label {
+            color: #55ff55; /* XP level number color */
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px #000000;
+        }
+
+        .xp-bar-bg {
+            background-color: #1a1a1a; /* Black background of empty bar */
+            border: 4px solid #4a4a4a; /* Bar border */
+            height: 20px;
+            position: relative;
+            image-rendering: pixelated;
+        }
+
+        .xp-bar-fill {
+            background-color: #55ff55; /* Light green color of full XP bar */
+            height: 100%;
+            /* UPDATE YOUR GOAL PERCENTAGE HERE (e.g., width: 35%) */
+            width: 35%; 
+            box-shadow: inset 0 -4px 0 #3cbe3c; /* 3D bottom shadow effect */
+            transition: width 0.5s ease-in-out;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #1a1a1a; /* Deep black/dark gray */
+            border-top: 4px solid #4a4a4a; /* Square pixel edge */
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center widget vertically and horizontally */
+        }
+
+        .footer-text {
+            margin-bottom: 15px;
+            font-size: 10px;
+            color: #ffff55; /* Yellow text like splash text in game menu */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main content of Ewewerban's website -->
+    <div class="container">
+        <h1>Welcome to Ewewerban's Website!</h1>
+        <p>I create YouTube videos and write articles on minewiki.pl.</p>
+        
+        <!-- XP PROGRESS BAR SECTION -->
+        <div class="xp-container">
+            <!-- Update your current fund and total goal here -->
+            <div class="xp-label">GOAL: NEW PC (350 / 1000 PLN)</div>
+            <div class="xp-bar-bg">
+                <div class="xp-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer with your official buycoffee.to widget -->
+    <footer>
+        <div class="footer-text">Enjoying my content? Support my goal!</div>
+        
+        <!-- YOUR BUYCOFFEE.TO WIDGET -->
+        <div style="width: 100%; max-width: 453px; font-family: Arial, sans-serif;">
+            <div
+              style="
+                box-sizing: border-box;
+                padding: 12px;
+                border-radius: 16px;
+                box-shadow: 0 0 rgba(0,0,0,0), 0 0 rgba(0,0,0,0), 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                background-color: #004725;
+                color: #FFFFFF;
+                text-align: center;
+              "
+            >
+              <h3 style="font-size: 14px; font-weight: 600; line-height: 1.5; margin: 0;">
+                Buy coffee for:
+              </h3>
+            </div>
+  
+            <div style="display: flex; gap: 8px; margin-top: 12px; justify-content: center;">
+              
+                <a
+                  href="https://buycoffee.to"
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 12px;
+                    border-radius: 16px;
+                    box-shadow: 0 0 rgba(0,0,0,0), 0 0 rgba(0,0,0,0), 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+                    width: 100%;
+                    text-align: center;
+                    background-color: #004725;
+                    color: #FFFFFF;
+                    text-decoration: none;
+                  "
+                  target="_blank"
+                  title="Buy coffee for: 5 zł"
+                >
+                  <img src="https://buycoffee.to" alt="small coffee icon" style="width: 30px; height: 30px;" />
+                  <span style="font-size: 14px; font-weight: 700; margin-top: 8px; line-height: 1.5;">
+                    5 zł
+                  </span>
+                </a>
+              
+                <a
+                  href="https://buycoffee.to"
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 12px;
+                    border-radius: 16px;
+                    box-shadow: 0 0 rgba(0,0,0,0), 0 0 rgba(0,0,0,0), 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+                    width: 100%;
+                    text-align: center;
+                    background-color: #004725;
+                    color: #FFFFFF;
+                    text-decoration: none;
+                  "
+                  target="_blank"
+                  title="Buy coffee for: 10 zł"
+                >
+                  <img src="https://buycoffee.to" alt="medium coffee icon" style="width: 30px; height: 30px;" />
+                  <span style="font-size: 14px; font-weight: 700; margin-top: 8px; line-height: 1.5;">
+                    10 zł
+                  </span>
+                </a>
+              
+                <a
+                  href="https://buycoffee.to"
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 12px;
+                    border-radius: 16px;
+                    box-shadow: 0 0 rgba(0,0,0,0), 0 0 rgba(0,0,0,0), 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+                    width: 100%;
+                    text-align: center;
+                    background-color: #004725;
+                    color: #FFFFFF;
+                    text-decoration: none;
+                  "
+                  target="_blank"
+                  title="Buy coffee for: 25 zł"
+                >
+                  <img src="https://buycoffee.to" alt="large coffee icon" style="width: 30px; height: 30px;" />
+                  <span style="font-size: 14px; font-weight: 700; margin-top: 8px; line-height: 1.5;">
+                    25 zł
+                  </span>
+                </a>
+              
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
