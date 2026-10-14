@@ -5,40 +5,155 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Ewewerban</title>
 <style>
-  :root { --bg:#0f172a; --fg:#f1f5f9; --muted:#94a3b8; --accent:#f97316; --sidebar:#1e293b; --border:#334155; }
-  * { box-sizing:border-box; }
-  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--fg); line-height:1.6; }
-  .wrap { max-width:1080px; margin:0 auto; padding:48px 24px; display:grid; gap:32px; grid-template-columns:1fr; }
-  
-  main { min-width:0; }
-  h1 { font-size:clamp(2rem,5vw,3rem); margin:0 0 12px; color:var(--accent); letter-spacing:-0.02em; }
-  .sub { color:var(--muted); font-size:1.125rem; margin:0 0 32px; }
-  p { margin:0 0 16px; }
-  img { max-width:100%; height:auto; border-radius:8px; margin:16px 0; }
-  hr { border:0; border-top:1px solid var(--border); margin:32px 0; }
-  .cta { display:inline-block; margin:16px 8px 16px 0; padding:14px 28px; background:var(--accent); color:#fff; text-decoration:none; border-radius:8px; font-weight:600; }
-  .cta:hover { background:#ea580c; }
-  .sidebar { background:var(--sidebar); border:1px solid var(--border); border-radius:12px; padding:20px; height:fit-content; }
-  .sidebar h3 { margin:0 0 12px; font-size:1rem; color:var(--accent); }
-  .sidebar ul { list-style:none; margin:0; padding:0; }
-  .sidebar li { padding:6px 0; border-bottom:1px solid var(--border); }
-  .sidebar li:last-child { border-bottom:0; }
-  .sidebar a { color:var(--fg); text-decoration:none; }
-  .sidebar a:hover { color:var(--accent); }
-  footer { margin-top:64px; padding-top:24px; border-top:1px solid var(--border); color:var(--muted); font-size:.875rem; text-align:center; }
+  :root {
+    --bg: #ffffff;
+    --fg: #0f172a;
+    --muted: #64748b;
+    --accent: #f97316;
+    --border: #e2e8f0;
+    --hover-bg: #fff7ed;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .wrap {
+    max-width: 600px;
+    margin: auto;
+    padding: 48px 24px;
+    width: 100%;
+  }
+  h1 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    margin: 0 0 8px;
+    color: var(--fg);
+    letter-spacing: -0.03em;
+    font-weight: 800;
+  }
+  h1 span {
+    color: var(--accent);
+  }
+  .sub {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin: 0 0 36px;
+  }
+  .links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 48px;
+  }
+  .link-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--fg);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+  }
+  .link-item:hover {
+    border-color: var(--accent);
+    background: var(--hover-bg);
+    transform: translateX(4px);
+  }
+  .link-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .link-item svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--accent);
+    flex-shrink: 0;
+  }
+  .arrow {
+    color: var(--muted);
+    font-weight: normal;
+    transition: transform 0.2s;
+  }
+  .link-item:hover .arrow {
+    color: var(--accent);
+    transform: translateX(2px);
+  }
+  footer {
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-align: center;
+  }
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
 </style>
 </head>
 <body>
   <div class="wrap">
     <main>
-      <h1>Hi, i’m Ewewerban 👋</h1>
-      <p class="sub">Im writing articles on minewiki.pl and im making free webpages for all</p>
-      <p>I dont really know what to write here so i will paste some links here</p>
-      <a class="cta" href="https://discord.gg/mbAqUn6Djn">📱Discord</a>
-      <a class="cta" href="https://buycoffee.to/ewewerban">☕️ Buy me a coffe</a>
-      <footer>© 2026 Ewewerban</footer>
-    </main>
+      <h1>Cześć, tu <span>Ewewerban</span> 👋</h1>
+      <p class="sub">Piszę artykuły na minewiki.pl i tworzę darmowe strony dla każdego w ramach LazyDuck Network.</p>
+      
+      <div class="links-list">
+        <!-- Dokumentacja -->
+        <a class="link-item" href="https://lazyducknetwork.github.io/docs">
+          <div class="link-left">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/><path d="M7 7h10v2H7zm0 4h10v2H7zm0 4h7v2H7z"/></svg>
+            <span>Dokumentacja (Docs)</span>
+          </div>
+          <span class="arrow">&rarr;</span>
+        </a>
 
+        <!-- GitHub -->
+        <a class="link-item" href="https://github.com/ewewerban">
+          <div class="link-left">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>GitHub</span>
+          </div>
+          <span class="arrow">&rarr;</span>
+        </a>
+
+        <!-- Discord -->
+        <a class="link-item" href="https://discord.gg/mbAqUn6Djn">
+          <div class="link-left">
+            <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.011c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+            <span>Discord</span>
+          </div>
+          <span class="arrow">&rarr;</span>
+        </a>
+
+        <!-- Buy me a coffee -->
+        <a class="link-item" href="https://buycoffee.to/ewewerban">
+          <div class="link-left">
+            <svg viewBox="0 0 24 24"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.1-.89-2-2-2zm0 5h-2V5h2v3zM2 21h20v2H2z"/></svg>
+            <span>Buy me a coffee</span>
+          </div>
+          <span class="arrow">&rarr;</span>
+        </a>
+      </div>
+
+      <footer>
+        © 2026 Ewewerban
+      </footer>
+    </main>
   </div>
 </body>
 </html>
