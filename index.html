@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ewewerban — Official Hub & Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        orange: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f97316;
+            color: #0f172a;
+        }
+        canvas#typoCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        .toast-slide {
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .harcwiki-card {
+            background: linear-gradient(135deg, #ff6600 0%, #ea580c 100%);
+        }
+        .orange-glow {
+            box-shadow: 0 10px 30px -5px rgba(234, 88, 12, 0.3);
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col justify-between overflow-x-hidden antialiased selection:bg-orange-600 selection:text-white">
+
+    <!-- Kinetic Typography Background Canvas ("ewewerban") -->
+    <canvas id="typoCanvas"></canvas>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 toast-slide flex items-center gap-3 bg-gray-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-orange-500/40">
+        <div class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-white text-sm shadow-md">
+            <i class="fas fa-check"></i>
+        </div>
+        <div>
+            <p id="toastTitle" class="font-bold text-sm">Sukces!</p>
+            <p id="toastMsg" class="text-xs text-gray-300">Skopiowano link do schowka.</p>
+        </div>
+    </div>
+
+    <!-- Pasek Nawigacji -->
+    <header class="sticky top-0 z-40 glass-card border-b border-orange-200/50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#" class="text-2xl font-black tracking-tight text-gray-900 flex items-center gap-1.5 group">
+                <span>ewewerban</span><span class="w-2.5 h-2.5 rounded-full bg-orange-500 group-hover:scale-125 transition-transform"></span>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-7">
+                <a href="#about" class="text-sm font-semibold text-gray-800 hover:text-orange-600 transition-colors">O mnie</a>
+                <a href="#harcwiki" class="text-sm font-semibold text-gray-800 hover:text-orange-600 transition-colors flex items-center gap-1.5">
+                    <i class="fas fa-compass text-orange-500 text-xs"></i> HarcWiki
+                </a>
+                <a href="#projects" class="text-sm font-semibold text-gray-800 hover:text-orange-600 transition-colors">Projekty</a>
+                <a href="#socials" class="text-sm font-semibold text-gray-800 hover:text-orange-600 transition-colors">Sociale</a>
+            </nav>
+
+            <div class="hidden md:flex items-center gap-3">
+                <!-- Przycisk SFX -->
+                <button id="sfxToggle" onclick="toggleSFX()" class="p-2.5 rounded-xl bg-orange-100/80 text-orange-700 hover:bg-orange-200 border border-orange-300/50 transition-all" title="Włącz/Wyłącz Dźwięki SFX">
+                    <i id="sfxIcon" class="fas fa-volume-up text-sm"></i>
+                </button>
+                <!-- Direct Discord Link -->
+                <a href="https://discord.gg/mbAqUn6Djn" target="_blank" rel="noopener" class="px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-xl shadow-md hover:shadow-orange-500/25 transition-all flex items-center gap-2">
+                    <i class="fab fa-discord text-base"></i>
+                    <span>Dołącz na Discord</span>
+                </a>
+            </div>
+
+            <!-- Przycisk Mobile Menu -->
+            <button id="mobileMenuBtn" class="md:hidden p-2 rounded-xl bg-orange-100 text-orange-700 hover:bg-orange-200 transition-colors" aria-label="Toggle Menu">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-orange-200 bg-white/95 backdrop-blur-lg px-6 py-4 space-y-3">
+            <a href="#about" class="block text-base font-medium text-gray-800 hover:text-orange-600 py-1">O mnie</a>
+            <a href="#harcwiki" class="block text-base font-medium text-gray-800 hover:text-orange-600 py-1">HarcWiki</a>
+            <a href="#projects" class="block text-base font-medium text-gray-800 hover:text-orange-600 py-1">Projekty</a>
+            <a href="#socials" class="block text-base font-medium text-gray-800 hover:text-orange-600 py-1">Social Media</a>
+            <div class="pt-2 flex items-center justify-between border-t border-orange-100">
+                <button onclick="toggleSFX()" class="text-xs font-semibold text-gray-700 flex items-center gap-2 py-2">
+                    <i id="sfxIconMobile" class="fas fa-volume-up text-orange-500"></i> SFX Dźwięki
+                </button>
+                <a href="https://discord.gg/mbAqUn6Djn" target="_blank" rel="noopener" class="px-3 py-1.5 text-xs font-bold text-white bg-orange-500 rounded-lg">
+                    Discord Serwer
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10 flex-grow max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+        
+        <!-- HERO SECTION -->
+        <section id="about" class="text-center py-8 sm:py-14 space-y-6">
+            <div class="glass-card max-w-4xl mx-auto p-8 sm:p-12 rounded-3xl shadow-xl border border-white/80 space-y-6">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-orange-100 border border-orange-300/80 rounded-full mb-1 shadow-sm">
+                    <span class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse"></span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-orange-800">Oficjalne Portfolio & Hub</span>
+                </div>
+                
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-black text-gray-900 tracking-tight leading-tight">
+                    Cześć, jestem <br class="hidden sm:block">
+                    <span class="bg-gradient-to-r from-orange-500 via-orange-600 to-amber-600 bg-clip-text text-transparent">ewewerban</span>
+                </h1>
+                
+                <p class="text-xl sm:text-2xl font-medium text-gray-700 max-w-2xl mx-auto h-12 flex items-center justify-center">
+                    <span id="typedText" class="border-r-2 border-orange-500 pr-1.5 font-mono text-gray-900 font-bold"></span>
+                </p>
+                
+                <p class="text-gray-600 max-w-xl mx-auto text-base leading-relaxed">
+                    Tworzę projekty w sieci, rozwijam encyklopedię harcerską HarcWiki oraz prowadzę społeczność i kanał YouTube.
+                </p>
+
+                <div class="pt-2 flex flex-wrap items-center justify-center gap-4">
+                    <a href="https://harcwiki.sowa.eu.org" target="_blank" rel="noopener" class="px-6 py-3.5 font-bold text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-2xl shadow-lg hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                        <i class="fas fa-compass"></i> Otwórz HarcWiki
+                    </a>
+                    <a href="https://discord.gg/mbAqUn6Djn" target="_blank" rel="noopener" class="px-6 py-3.5 font-bold text-gray-800 bg-white border border-gray-200 hover:border-orange-400 hover:text-orange-600 rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                        <i class="fab fa-discord text-indigo-500"></i> Serwer Discord
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- HARCWIKI CARD SHOWCASE -->
+        <section id="harcwiki" class="space-y-4">
+            <div class="harcwiki-card rounded-3xl p-6 sm:p-10 text-white relative overflow-hidden orange-glow transition-all duration-300 border border-white/20">
+                <!-- Decorative Icon Background -->
+                <div class="absolute -right-8 -bottom-8 opacity-15 text-[180px] pointer-events-none select-none font-black text-white">
+                    <i class="fas fa-compass"></i>
+                </div>
+
+                <div class="relative z-10 flex flex-col justify-between min-h-[300px]">
+                    <div class="flex items-center justify-between">
+                        <div class="inline-flex items-center gap-2 bg-black/25 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-mono tracking-wider font-semibold border border-white/20">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                            <span>HARCWIKI ENCYKLOPEDIA</span>
+                        </div>
+                        <span class="font-mono text-xs text-orange-100 font-semibold bg-white/10 px-3 py-1 rounded-lg backdrop-blur-sm">v2.0</span>
+                    </div>
+
+                    <div class="my-6 space-y-3 max-w-2xl">
+                        <h3 class="text-4xl sm:text-5xl font-black tracking-tight text-white flex items-center gap-3">
+                            HarcWiki
+                        </h3>
+                        <p class="text-orange-100 text-lg sm:text-xl font-medium">
+                            Wiedza harcerska w jednym miejscu
+                        </p>
+                        <p class="text-orange-50/90 text-sm sm:text-base leading-relaxed pt-1">
+                            Otwarta cyfrowa baza wiedzy ułatwiająca dostęp do stopni, sprawności, poradników i technik harcerskich.
+                        </p>
+                    </div>
+
+                    <div class="pt-6 border-t border-white/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-xs text-orange-100">
+                        <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                            <div>
+                                <span class="opacity-80 block text-[10px] uppercase tracking-wider text-orange-200">Adres Serwisu</span>
+                                <strong class="text-sm font-sans text-white">harcwiki.sowa.eu.org</strong>
+                            </div>
+                            <div>
+                                <span class="opacity-80 block text-[10px] uppercase tracking-wider text-orange-200">Autor</span>
+                                <strong class="text-sm font-sans text-white">ewewerban</strong>
+                            </div>
+                        </div>
+
+                        <a href="https://harcwiki.sowa.eu.org" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 font-sans font-bold text-orange-950 bg-white hover:bg-orange-50 px-6 py-3 rounded-2xl shadow-xl transition-all hover:scale-105 active:scale-95">
+                            <span>Przejdź do HarcWiki</span>
+                            <i class="fas fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKCJA PROJEKTÓW & PRAWDZIWYCH STATYSTYK -->
+        <section id="projects" class="space-y-8 pt-4">
+            <div class="glass-card rounded-3xl p-6 sm:p-8 border border-white/80 space-y-8">
+                <div class="text-center space-y-2">
+                    <span class="text-xs font-bold uppercase tracking-widest text-orange-600">Twórczość & Fakty</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-gray-900">Projekty i Statystyki</h2>
+                    <p class="text-gray-500 text-sm max-w-md mx-auto">Aktualne i zweryfikowane dane dotyczące mojej działalności.</p>
+                </div>
+
+                <!-- Filtrowanie Projektów -->
+                <div class="flex flex-wrap items-center justify-center gap-2">
+                    <button onclick="filterProjects('all')" class="proj-btn px-4 py-2 text-xs font-bold rounded-xl bg-orange-500 text-white transition-all shadow-sm">Wszystkie</button>
+                    <button onclick="filterProjects('wiki')" class="proj-btn px-4 py-2 text-xs font-bold rounded-xl bg-gray-100 hover:bg-orange-100 text-gray-700 hover:text-orange-600 transition-all">HarcWiki</button>
+                    <button onclick="filterProjects('yt')" class="proj-btn px-4 py-2 text-xs font-bold rounded-xl bg-gray-100 hover:bg-orange-100 text-gray-700 hover:text-orange-600 transition-all">YouTube</button>
+                    <button onclick="filterProjects('code')" class="proj-btn px-4 py-2 text-xs font-bold rounded-xl bg-gray-100 hover:bg-orange-100 text-gray-700 hover:text-orange-600 transition-all">Kod & GitHub</button>
+                </div>
+
+                <!-- Siatka Projektów -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Card 1 -->
+                    <div data-cat="wiki" class="project-item bg-white/90 rounded-2xl border border-orange-200/80 p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="w-12 h-12 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl font-black">
+                                <i class="fas fa-compass"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">HarcWiki</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Słownik i encyklopedia pojęć harcerskich pod adresem harcwiki.sowa.eu.org.
+                            </p>
+                        </div>
+                        <div class="pt-5 flex items-center justify-between border-t border-gray-100 mt-4">
+                            <span class="text-xs font-semibold text-orange-600 bg-orange-50 px-3 py-1 rounded-full">Baza Wiedzy</span>
+                            <a href="https://harcwiki.sowa.eu.org" target="_blank" rel="noopener" class="text-gray-900 font-bold text-sm hover:text-orange-600 flex items-center gap-1">
+                                Otwórz <i class="fas fa-chevron-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div data-cat="yt" class="project-item bg-white/90 rounded-2xl border border-orange-200/80 p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center text-xl font-black">
+                                <i class="fab fa-youtube"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Poradniki Minecraft</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Oficjalny kanał YouTube — m.in. poradnik robienia 2x2 piston door w Minecraft.
+                            </p>
+                        </div>
+                        <div class="pt-5 flex items-center justify-between border-t border-gray-100 mt-4">
+                            <span class="text-xs font-semibold text-red-600 bg-red-50 px-3 py-1 rounded-full">Filmy</span>
+                            <a href="https://youtube.com/@ewewerban" target="_blank" rel="noopener" class="text-gray-900 font-bold text-sm hover:text-red-600 flex items-center gap-1">
+                                Oglądaj <i class="fas fa-chevron-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div data-cat="code" class="project-item bg-white/90 rounded-2xl border border-orange-200/80 p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="w-12 h-12 rounded-2xl bg-gray-100 text-gray-800 flex items-center justify-center text-xl font-black">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">GitHub Repos</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Repozytoria z otwartym kodem źródłowym stron webowych i własnych projektów.
+                            </p>
+                        </div>
+                        <div class="pt-5 flex items-center justify-between border-t border-gray-100 mt-4">
+                            <span class="text-xs font-semibold text-gray-800 bg-gray-100 px-3 py-1 rounded-full">Kod</span>
+                            <a href="https://github.com/ewewerban" target="_blank" rel="noopener" class="text-gray-900 font-bold text-sm hover:text-orange-600 flex items-center gap-1">
+                                Profil <i class="fas fa-chevron-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Liczniki Prawdziwych Statystyk -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 pt-4">
+                    <div class="bg-gradient-to-br from-orange-50 to-white p-5 rounded-2xl border border-orange-200 text-center shadow-sm">
+                        <div class="text-3xl sm:text-4xl font-black text-orange-600">26</div>
+                        <div class="text-xs font-bold text-gray-600 uppercase tracking-wider mt-1">Subskrybentów YT</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-orange-50 to-white p-5 rounded-2xl border border-orange-200 text-center shadow-sm">
+                        <div class="text-3xl sm:text-4xl font-black text-orange-600">1</div>
+                        <div class="text-xs font-bold text-gray-600 uppercase tracking-wider mt-1">Opublikowany Film YT</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-orange-50 to-white p-5 rounded-2xl border border-orange-200 text-center shadow-sm col-span-2 md:col-span-1">
+                        <div class="text-3xl sm:text-4xl font-black text-orange-600">Active</div>
+                        <div class="text-xs font-bold text-gray-600 uppercase tracking-wider mt-1">Status HarcWiki</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DOLNA SEKCJA SOCIAL MEDIA HUB -->
+        <section id="socials" class="space-y-8 pt-4">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 border border-white/80 space-y-8">
+                <div class="text-center space-y-2">
+                    <span class="text-xs font-bold uppercase tracking-widest text-orange-600">Bądźmy w kontakcie</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-gray-900">Moje Social Media</h2>
+                    <p class="text-gray-500 text-sm max-w-md mx-auto">Dołącz do społeczności i śledź mnie na poniższych platformach.</p>
+                </div>
+
+                <!-- Karty Social Media na dole strony -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    
+                    <!-- Discord (Direct Link to discord.gg/mbAqUn6Djn) -->
+                    <a href="https://discord.gg/mbAqUn6Djn" target="_blank" rel="noopener" class="bg-white p-5 rounded-2xl border border-gray-200/90 shadow-sm hover:border-orange-500 hover:shadow-lg hover:-translate-y-1 transition-all group flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-2xl group-hover:scale-105 transition-transform">
+                                <i class="fab fa-discord"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-base text-gray-900 group-hover:text-orange-600 transition-colors">Discord Serwer</h3>
+                                <p class="text-xs text-gray-500 font-mono">discord.gg/mbAqUn6Djn</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-arrow-up-right-from-square text-gray-400 group-hover:text-orange-500 transition-colors text-sm"></i>
+                    </a>
+
+                    <!-- YouTube -->
+                    <a href="https://youtube.com/@ewewerban" target="_blank" rel="noopener" class="bg-white p-5 rounded-2xl border border-gray-200/90 shadow-sm hover:border-orange-500 hover:shadow-lg hover:-translate-y-1 transition-all group flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-red-600 text-white flex items-center justify-center text-2xl group-hover:scale-105 transition-transform">
+                                <i class="fab fa-youtube"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-base text-gray-900 group-hover:text-orange-600 transition-colors">YouTube</h3>
+                                <p class="text-xs text-gray-500 font-mono">@ewewerban</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-arrow-up-right-from-square text-gray-400 group-hover:text-orange-500 transition-colors text-sm"></i>
+                    </a>
+
+                    <!-- Twitch -->
+                    <a href="https://twitch.tv/ewewerban" target="_blank" rel="noopener" class="bg-white p-5 rounded-2xl border border-gray-200/90 shadow-sm hover:border-orange-500 hover:shadow-lg hover:-translate-y-1 transition-all group flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-purple-600 text-white flex items-center justify-center text-2xl group-hover:scale-105 transition-transform">
+                                <i class="fab fa-twitch"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-base text-gray-900 group-hover:text-orange-600 transition-colors">Twitch</h3>
+                                <p class="text-xs text-gray-500 font-mono">@ewewerban</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-arrow-up-right-from-square text-gray-400 group-hover:text-orange-500 transition-colors text-sm"></i>
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/ewewerban" target="_blank" rel="noopener" class="bg-white p-5 rounded-2xl border border-gray-200/90 shadow-sm hover:border-orange-500 hover:shadow-lg hover:-translate-y-1 transition-all group flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-gray-900 text-white flex items-center justify-center text-2xl group-hover:scale-105 transition-transform">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-base text-gray-900 group-hover:text-orange-600 transition-colors">GitHub</h3>
+                                <p class="text-xs text-gray-500 font-mono">@ewewerban</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-arrow-up-right-from-square text-gray-400 group-hover:text-orange-500 transition-colors text-sm"></i>
+                    </a>
+
+                    <!-- TikTok -->
+                    <a href="https://tiktok.com/@ewewerban" target="_blank" rel="noopener" class="bg-white p-5 rounded-2xl border border-gray-200/90 shadow-sm hover:border-orange-500 hover:shadow-lg hover:-translate-y-1 transition-all group flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-black text-white flex items-center justify-center text-2xl group-hover:scale-105 transition-transform">
+                                <i class="fab fa-tiktok"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-base text-gray-900 group-hover:text-orange-600 transition-colors">TikTok</h3>
+                                <p class="text-xs text-gray-500 font-mono">@ewewerban</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-arrow-up-right-from-square text-gray-400 group-hover:text-orange-500 transition-colors text-sm"></i>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/ewewerban" target="_blank" rel="noopener" class="bg-white p-5 rounded-2xl border border-gray-200/90 shadow-sm hover:border-orange-500 hover:shadow-lg hover:-translate-y-1 transition-all group flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-yellow-500 via-pink-600 to-purple-600 text-white flex items-center justify-center text-2xl group-hover:scale-105 transition-transform">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-base text-gray-900 group-hover:text-orange-600 transition-colors">Instagram</h3>
+                                <p class="text-xs text-gray-500 font-mono">@ewewerban</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-arrow-up-right-from-square text-gray-400 group-hover:text-orange-500 transition-colors text-sm"></i>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- STOPKA -->
+    <footer class="relative z-10 border-t border-orange-300/40 bg-white/90 backdrop-blur-md py-8 mt-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <a href="#" class="text-xl font-black tracking-tight text-gray-900 flex items-center gap-1.5">
+                    <span>ewewerban</span><span class="w-2 h-2 rounded-full bg-orange-500"></span>
+                </a>
+
+                <div class="flex items-center gap-4 text-lg text-gray-600">
+                    <a href="https://discord.gg/mbAqUn6Djn" target="_blank" rel="noopener" class="hover:text-indigo-600 transition-colors" title="Discord Serwer"><i class="fab fa-discord"></i></a>
+                    <a href="https://youtube.com/@ewewerban" target="_blank" rel="noopener" class="hover:text-red-600 transition-colors" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://twitch.tv/ewewerban" target="_blank" rel="noopener" class="hover:text-purple-600 transition-colors" title="Twitch"><i class="fab fa-twitch"></i></a>
+                    <a href="https://github.com/ewewerban" target="_blank" rel="noopener" class="hover:text-gray-900 transition-colors" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://tiktok.com/@ewewerban" target="_blank" rel="noopener" class="hover:text-black transition-colors" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://instagram.com/ewewerban" target="_blank" rel="noopener" class="hover:text-pink-600 transition-colors" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-500">
+                <p>&copy; <span id="year"></span> ewewerban. Wszelkie prawa zastrzeżone.</p>
+                <div class="flex items-center gap-3">
+                    <a href="https://harcwiki.sowa.eu.org" target="_blank" class="hover:text-orange-600 transition-colors font-semibold">harcwiki.sowa.eu.org</a>
+                    <span>•</span>
+                    <a href="#about" class="hover:text-orange-600 transition-colors">Do góry ↑</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SKRYPTY JAVASCRIPT -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Web Audio API Synth Dźwięki
+        let sfxEnabled = true;
+        let audioCtx = null;
+
+        function playSound(freq = 440, type = 'sine', duration = 0.08) {
+            if (!sfxEnabled) return;
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch (e) {}
+        }
+
+        function toggleSFX() {
+            sfxEnabled = !sfxEnabled;
+            const icon = document.getElementById('sfxIcon');
+            const iconMob = document.getElementById('sfxIconMobile');
+            if (sfxEnabled) {
+                icon.className = 'fas fa-volume-up text-sm';
+                iconMob.className = 'fas fa-volume-up text-orange-500';
+                playSound(600, 'sine', 0.1);
+                showToast("Dźwięki SFX", "Efekty dźwiękowe włączone.");
+            } else {
+                icon.className = 'fas fa-volume-mute text-sm text-gray-400';
+                iconMob.className = 'fas fa-volume-mute text-gray-400';
+                showToast("Dźwięki SFX", "Efekty dźwiękowe wyłączone.");
+            }
+        }
+
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('click', () => playSound(520, 'triangle', 0.04));
+        });
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Toast Notification Helper
+        function showToast(title, msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastTitle').textContent = title;
+            document.getElementById('toastMsg').textContent = msg;
+
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3000);
+        }
+
+        // Filtering Projects
+        function filterProjects(category) {
+            const items = document.querySelectorAll('.project-item');
+            const btns = document.querySelectorAll('.proj-btn');
+
+            btns.forEach(b => {
+                b.classList.remove('bg-orange-500', 'text-white');
+                b.classList.add('bg-gray-100', 'text-gray-700');
+            });
+            event.target.classList.remove('bg-gray-100', 'text-gray-700');
+            event.target.classList.add('bg-orange-500', 'text-white');
+
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-cat') === category) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Typewriter Effect
+        const phrases = [
+            "Twórca HarcWiki",
+            "YouTuber & Streamer",
+            "Developer & Creator"
+        ];
+        let pIdx = 0, cIdx = 0, isDeleting = false;
+        const typedEl = document.getElementById("typedText");
+
+        function typeLoop() {
+            const current = phrases[pIdx];
+            if (isDeleting) {
+                typedEl.textContent = current.substring(0, cIdx - 1);
+                cIdx--;
+            } else {
+                typedEl.textContent = current.substring(0, cIdx + 1);
+                cIdx++;
+            }
+
+            let speed = isDeleting ? 30 : 70;
+            if (!isDeleting && cIdx === current.length) {
+                speed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && cIdx === 0) {
+                isDeleting = false;
+                pIdx = (pIdx + 1) % phrases.length;
+                speed = 400;
+            }
+
+            setTimeout(typeLoop, speed);
+        }
+        typeLoop();
+
+        // REPEATING KINETIC TYPOGRAPHY BACKGROUND CANVAS ("ewewerban")
+        const canvas = document.getElementById("typoCanvas");
+        const ctx = canvas.getContext("2d");
+
+        let w = (canvas.width = window.innerWidth);
+        let h = (canvas.height = window.innerHeight);
+
+        window.addEventListener("resize", () => {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        });
+
+        let offset = 0;
+
+        function drawKineticTypoBackground() {
+            ctx.fillStyle = "#f97316"; // Bright Orange base
+            ctx.fillRect(0, 0, w, h);
+
+            ctx.font = "900 52px 'Inter', sans-serif";
+            ctx.textBaseline = "middle";
+
+            const text = "ewewerban ";
+            const textWidth = ctx.measureText(text).width;
+            const lineHeight = 65;
+
+            offset += 0.35; // Smooth text scrolling
+            if (offset >= textWidth) offset = 0;
+
+            const rows = Math.ceil(h / lineHeight) + 2;
+            const cols = Math.ceil(w / textWidth) + 3;
+
+            for (let r = -1; r < rows; r++) {
+                const y = r * lineHeight;
+                const isEven = r % 2 === 0;
+                const direction = isEven ? 1 : -1;
+                const rowOffset = (offset * direction) + (isEven ? 0 : textWidth / 2);
+
+                if (r % 3 === 0) {
+                    ctx.fillStyle = "rgba(234, 88, 12, 0.45)"; // Darker warm orange
+                } else if (r % 3 === 1) {
+                    ctx.fillStyle = "rgba(251, 146, 60, 0.55)"; // Lighter warm orange
+                } else {
+                    ctx.fillStyle = "rgba(194, 65, 12, 0.40)";
+                }
+
+                for (let c = -2; c < cols; c++) {
+                    let x = c * textWidth + (rowOffset % textWidth);
+                    ctx.fillText(text, x, y);
+                }
+            }
+
+            requestAnimationFrame(drawKineticTypoBackground);
+        }
+
+        window.onload = function() {
+            drawKineticTypoBackground();
+        };
+    </script>
+</body>
+</html>
