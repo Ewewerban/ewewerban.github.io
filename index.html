@@ -18,7 +18,6 @@
             overflow-x: hidden;
         }
 
-        /* Dynamic Kinetic Background Canvas */
         #kinetic-bg {
             position: fixed;
             top: 0;
@@ -29,7 +28,6 @@
             pointer-events: none;
         }
 
-        /* Glassmorphism Cards */
         .glass-card {
             background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(16px);
@@ -55,7 +53,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -70,16 +67,13 @@
 </head>
 <body class="relative min-h-screen selection:bg-orange-500 selection:text-white">
 
-    <!-- Kinetic Typography Background Canvas -->
     <canvas id="kinetic-bg"></canvas>
 
-    <!-- Main Wrapper -->
     <div class="relative z-10 flex flex-col min-h-screen">
 
         <!-- Top Navigation -->
         <nav class="sticky top-0 z-50 glass-nav px-6 py-4">
             <div class="max-w-6xl mx-auto flex items-center justify-between">
-                <!-- Branding / Logo -->
                 <a href="#" class="text-2xl font-extrabold tracking-tight flex items-center gap-2.5 hover:scale-105 transition-transform group">
                     <div class="w-10 h-10 rounded-xl bg-orange-500 text-white flex items-center justify-center shadow-lg shadow-orange-500/40 group-hover:rotate-12 transition-transform">
                         <i class="fa-solid fa-bolt text-xl"></i>
@@ -87,15 +81,19 @@
                     <span class="text-stone-900 font-black text-2xl tracking-tight">ewewerban</span>
                 </a>
 
-                <!-- Desktop Links -->
                 <div class="hidden md:flex items-center gap-8 font-bold text-stone-700">
                     <a href="#about" class="hover:text-orange-600 transition-colors">O mnie</a>
                     <a href="#projects" class="hover:text-orange-600 transition-colors">Projekty</a>
-                    <a href="#stats" class="hover:text-orange-600 transition-colors">Statystyki</a>
-                    <a href="#socials" class="hover:text-orange-600 transition-colors">Sociale</a>
+                    <a href="https://ewewerban.itch.io" target="_blank" class="hover:text-orange-600 transition-colors flex items-center gap-1.5">
+                        <svg class="w-4 h-4 fill-current text-stone-700" viewBox="0 0 24 24"><path d="M3.13 3C2.5 3 2 .5 2 1.13v1.8c0 .28.1.53.28.72l3.43 3.44c.38.38 1.02.38 1.4 0l1.45-1.45c.38-.38.38-1.02 0-1.4L5.12 3.8C4.94 3.62 4.7 3.5 4.4 3.5H3.13zM20.87 3h-1.28c-.3 0-.54.12-.72.3l-3.44 3.44c-.38.38-.38 1.02 0 1.4l1.45 1.45c.38.38 1.02.38 1.4 0l3.44-3.44c.18-.19.28-.44.28-.72V4.13C22 3.5 21.5 3 20.87 3zM12 8.5c-3.04 0-5.5 2.46-5.5 5.5s2.46 5.5 5.5 5.5 5.5-2.46 5.5-5.5-2.46-5.5-5.5-5.5zm0 2c1.93 0 3.5 1.57 3.5 3.5s-1.57 3.5-3.5 3.5-3.5-1.57-3.5-3.5 1.57-3.5 3.5-3.5z"/></svg>
+                        itch.io
+                    </a>
+                    <a href="https://bsky.app/profile/ewewerban.bsky.social" target="_blank" class="hover:text-orange-600 transition-colors flex items-center gap-1.5">
+                        <svg class="w-4 h-4 fill-current text-sky-500" viewBox="0 0 566 500"><path d="M121.8 32.2c89.1 66.8 162.5 201.2 161.2 201.2S356.4 99 445.5 32.2C509.7-15.8 566 21 566 98.7c0 15.5-3.8 126.8-16.5 172.1-15.8 56.4-73.6 70.8-124.9 62.4 90 15.8 113 78.4 63.3 129.8-94.5 97.8-192.5-24.5-204.6-116.6-12.1 92.1-110.1 214.4-204.6 116.6-49.7-51.4-26.7-114 63.3-129.8-51.3 8.4-109.1-6-124.9-62.4C3.8 225.5 0 114.2 0 98.7 0 21 56.3-15.8 121.8 32.2z"/></svg>
+                        Bluesky
+                    </a>
                 </div>
 
-                <!-- Action Controls -->
                 <div class="flex items-center gap-3">
                     <button id="sfx-toggle" onclick="toggleSFX()" class="p-2.5 rounded-xl bg-orange-100 text-orange-600 hover:bg-orange-200 transition-all active:scale-95" title="Dźwięki interfejsu">
                         <i id="sfx-icon" class="fa-solid fa-volume-xmark text-lg"></i>
@@ -176,7 +174,6 @@
                         </div>
                     </div>
 
-                    <!-- HarcWiki Preview Card -->
                     <div class="lg:w-1/2 w-full">
                         <div class="bg-stone-900 rounded-2xl p-5 shadow-2xl border border-stone-800">
                             <div class="flex items-center gap-2 mb-4 pb-3 border-b border-stone-800">
@@ -234,8 +231,27 @@
                 <p class="text-stone-800 font-bold">Moje oficjalne kanały społecznościowe</p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4">
-                <!-- X / Twitter with new official icon -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                
+                <!-- Bluesky SVG Icon -->
+                <a href="https://bsky.app/profile/ewewerban.bsky.social" target="_blank" onclick="playClickSound()" class="glass-card p-5 rounded-2xl text-center hover:scale-105 transition-all hover:shadow-xl group border border-stone-200 flex flex-col items-center justify-center">
+                    <svg class="w-10 h-10 fill-current text-sky-500 mb-2 group-hover:scale-110 transition-transform" viewBox="0 0 566 500">
+                        <path d="M121.8 32.2c89.1 66.8 162.5 201.2 161.2 201.2S356.4 99 445.5 32.2C509.7-15.8 566 21 566 98.7c0 15.5-3.8 126.8-16.5 172.1-15.8 56.4-73.6 70.8-124.9 62.4 90 15.8 113 78.4 63.3 129.8-94.5 97.8-192.5-24.5-204.6-116.6-12.1 92.1-110.1 214.4-204.6 116.6-49.7-51.4-26.7-114 63.3-129.8-51.3 8.4-109.1-6-124.9-62.4C3.8 225.5 0 114.2 0 98.7 0 21 56.3-15.8 121.8 32.2z"/>
+                    </svg>
+                    <div class="font-extrabold text-stone-900 text-sm">Bluesky</div>
+                    <div class="text-xs text-stone-500 font-bold">@ewewerban</div>
+                </a>
+
+                <!-- itch.io SVG Icon -->
+                <a href="https://ewewerban.itch.io" target="_blank" onclick="playClickSound()" class="glass-card p-5 rounded-2xl text-center hover:scale-105 transition-all hover:shadow-xl group border border-stone-200 flex flex-col items-center justify-center">
+                    <svg class="w-10 h-10 fill-current text-red-500 mb-2 group-hover:scale-110 transition-transform" viewBox="0 0 24.5 24">
+                        <path d="M3.13 3C2.5 3 2 .5 2 1.13v1.8c0 .28.1.53.28.72l3.43 3.44c.38.38 1.02.38 1.4 0l1.45-1.45c.38-.38.38-1.02 0-1.4L5.12 3.8C4.94 3.62 4.7 3.5 4.4 3.5H3.13zM20.87 3h-1.28c-.3 0-.54.12-.72.3l-3.44 3.44c-.38.38-.38 1.02 0 1.4l1.45 1.45c.38.38 1.02.38 1.4 0l3.44-3.44c.18-.19.28-.44.28-.72V4.13C22 3.5 21.5 3 20.87 3zM12 8.5c-3.04 0-5.5 2.46-5.5 5.5s2.46 5.5 5.5 5.5 5.5-2.46 5.5-5.5-2.46-5.5-5.5-5.5zm0 2c1.93 0 3.5 1.57 3.5 3.5s-1.57 3.5-3.5 3.5-3.5-1.57-3.5-3.5 1.57-3.5 3.5-3.5z"/>
+                    </svg>
+                    <div class="font-extrabold text-stone-900 text-sm">itch.io</div>
+                    <div class="text-xs text-stone-500 font-bold">ewewerban</div>
+                </a>
+
+                <!-- X / Twitter -->
                 <a href="https://x.com/ewewerban" target="_blank" onclick="playClickSound()" class="glass-card p-5 rounded-2xl text-center hover:scale-105 transition-all hover:shadow-xl group border border-stone-200">
                     <i class="fa-brands fa-x-twitter text-3xl text-stone-900 mb-3 group-hover:scale-110 transition-transform"></i>
                     <div class="font-extrabold text-stone-900 text-sm">X (Twitter)</div>
@@ -270,13 +286,6 @@
                     <div class="text-xs text-stone-500 font-bold">@ewewerban</div>
                 </a>
 
-                <!-- Instagram -->
-                <a href="https://instagram.com/ewewerban" target="_blank" onclick="playClickSound()" class="glass-card p-5 rounded-2xl text-center hover:scale-105 transition-all hover:shadow-xl group border border-stone-200">
-                    <i class="fa-brands fa-instagram text-3xl text-pink-600 mb-3 group-hover:scale-110 transition-transform"></i>
-                    <div class="font-extrabold text-stone-900 text-sm">Instagram</div>
-                    <div class="text-xs text-stone-500 font-bold">ewewerban</div>
-                </a>
-
                 <!-- GitHub -->
                 <a href="https://github.com/ewewerban" target="_blank" onclick="playClickSound()" class="glass-card p-5 rounded-2xl text-center hover:scale-105 transition-all hover:shadow-xl group border border-stone-200">
                     <i class="fa-brands fa-github text-3xl text-stone-900 mb-3 group-hover:scale-110 transition-transform"></i>
@@ -294,7 +303,8 @@
                     <p class="text-xs text-stone-600 mt-1 font-bold">Oficjalna strona wizytówkowa | HarcWiki Developer</p>
                 </div>
                 <div class="flex items-center gap-6 text-stone-800 font-bold text-sm">
-                    <a href="https://x.com/ewewerban" target="_blank" class="hover:text-orange-600 transition-colors">X.com</a>
+                    <a href="https://bsky.app/profile/ewewerban.bsky.social" target="_blank" class="hover:text-orange-600 transition-colors">Bluesky</a>
+                    <a href="https://ewewerban.itch.io" target="_blank" class="hover:text-orange-600 transition-colors">itch.io</a>
                     <a href="https://discord.gg/mbAqUn6Djn" target="_blank" class="hover:text-orange-600 transition-colors">Discord</a>
                     <a href="https://harcwiki.sowa.eu.org" target="_blank" class="hover:text-orange-600 transition-colors">HarcWiki</a>
                 </div>
@@ -305,7 +315,7 @@
 
     <!-- JavaScript Engines -->
     <script>
-        /* Kinetic Typography Canvas Engine (Warm Orange Pattern with Spacing) */
+        /* Kinetic Background Canvas */
         const canvas = document.getElementById('kinetic-bg');
         const ctx = canvas.getContext('2d');
 
@@ -330,13 +340,11 @@
         let offset = 0;
 
         function drawKineticText() {
-            // Warm Orange Background (#f97316)
             ctx.fillStyle = '#f97316';
             ctx.fillRect(0, 0, width, height);
 
             ctx.font = `900 ${fontSize}px 'Plus Jakarta Sans', sans-serif`;
             
-            // Generous spacing between repetitions
             const stepX = 360; 
             const stepY = 65;
             offset += 0.45;
@@ -349,13 +357,12 @@
                     const posX = x + (rowShift % stepX);
                     const posY = y;
 
-                    // Mouse displacement & glow interaction
                     const dx = posX - mouseX;
                     const dy = posY - mouseY;
                     const dist = Math.sqrt(dx * dx + dy * dy);
                     const maxDist = 240;
 
-                    let alpha = 0.30; // base subtle contrast
+                    let alpha = 0.30;
                     if (dist < maxDist) {
                         alpha = 0.30 + (1 - dist / maxDist) * 0.55;
                     }
@@ -400,7 +407,7 @@
             } else if (isDeleting && charIdx === 0) {
                 isDeleting = false;
                 phraseIdx = (phraseIdx + 1) % phrases.length;
-                delay = 400;
+                delay = 500;
             }
 
             setTimeout(type, delay);
@@ -408,43 +415,42 @@
 
         type();
 
-        /* Web Audio API Sound Effects Engine */
+        /* Interactive Web Audio Sound Effects */
         let sfxEnabled = false;
-        let audioCtx = null;
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
         function toggleSFX() {
             sfxEnabled = !sfxEnabled;
             const icon = document.getElementById('sfx-icon');
-            const btn = document.getElementById('sfx-toggle');
-
             if (sfxEnabled) {
-                icon.className = "fa-solid fa-volume-high text-lg";
-                btn.className = "p-2.5 rounded-xl bg-orange-600 text-white transition-all shadow-md active:scale-95";
-                if (!audioCtx) {
-                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                }
+                icon.className = 'fa-solid fa-volume-high text-lg';
                 playClickSound();
             } else {
-                icon.className = "fa-solid fa-volume-xmark text-lg";
-                btn.className = "p-2.5 rounded-xl bg-orange-100 text-orange-600 hover:bg-orange-200 transition-all active:scale-95";
+                icon.className = 'fa-solid fa-volume-xmark text-lg';
             }
         }
 
         function playClickSound() {
-            if (!sfxEnabled || !audioCtx) return;
-            try {
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(600, audioCtx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(900, audioCtx.currentTime + 0.08);
-                gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.08);
-            } catch(e){}
+            if (!sfxEnabled) return;
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(580, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.08);
+
+            gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.08);
         }
     </script>
 </body>
