@@ -81,19 +81,6 @@
                     <span class="text-stone-900 font-black text-2xl tracking-tight">ewewerban</span>
                 </a>
 
-                <div class="hidden md:flex items-center gap-8 font-bold text-stone-700">
-                    <a href="#about" class="hover:text-orange-600 transition-colors">O mnie</a>
-                    <a href="#projects" class="hover:text-orange-600 transition-colors">Projekty</a>
-                    <a href="https://ewewerban.itch.io" target="_blank" class="hover:text-orange-600 transition-colors flex items-center gap-1.5">
-                        <svg class="w-4 h-4 fill-current text-stone-700" viewBox="0 0 24 24"><path d="M3.13 3C2.5 3 2 .5 2 1.13v1.8c0 .28.1.53.28.72l3.43 3.44c.38.38 1.02.38 1.4 0l1.45-1.45c.38-.38.38-1.02 0-1.4L5.12 3.8C4.94 3.62 4.7 3.5 4.4 3.5H3.13zM20.87 3h-1.28c-.3 0-.54.12-.72.3l-3.44 3.44c-.38.38-.38 1.02 0 1.4l1.45 1.45c.38.38 1.02.38 1.4 0l3.44-3.44c.18-.19.28-.44.28-.72V4.13C22 3.5 21.5 3 20.87 3zM12 8.5c-3.04 0-5.5 2.46-5.5 5.5s2.46 5.5 5.5 5.5 5.5-2.46 5.5-5.5-2.46-5.5-5.5-5.5zm0 2c1.93 0 3.5 1.57 3.5 3.5s-1.57 3.5-3.5 3.5-3.5-1.57-3.5-3.5 1.57-3.5 3.5-3.5z"/></svg>
-                        itch.io
-                    </a>
-                    <a href="https://bsky.app/profile/ewewerban.bsky.social" target="_blank" class="hover:text-orange-600 transition-colors flex items-center gap-1.5">
-                        <svg class="w-4 h-4 fill-current text-sky-500" viewBox="0 0 566 500"><path d="M121.8 32.2c89.1 66.8 162.5 201.2 161.2 201.2S356.4 99 445.5 32.2C509.7-15.8 566 21 566 98.7c0 15.5-3.8 126.8-16.5 172.1-15.8 56.4-73.6 70.8-124.9 62.4 90 15.8 113 78.4 63.3 129.8-94.5 97.8-192.5-24.5-204.6-116.6-12.1 92.1-110.1 214.4-204.6 116.6-49.7-51.4-26.7-114 63.3-129.8-51.3 8.4-109.1-6-124.9-62.4C3.8 225.5 0 114.2 0 98.7 0 21 56.3-15.8 121.8 32.2z"/></svg>
-                        Bluesky
-                    </a>
-                </div>
-
                 <div class="flex items-center gap-3">
                     <button id="sfx-toggle" onclick="toggleSFX()" class="p-2.5 rounded-xl bg-orange-100 text-orange-600 hover:bg-orange-200 transition-all active:scale-95" title="Dźwięki interfejsu">
                         <i id="sfx-icon" class="fa-solid fa-volume-xmark text-lg"></i>
@@ -233,7 +220,7 @@
 
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 
-                <!-- Bluesky SVG Icon -->
+                <!-- Bluesky Official SVG Icon -->
                 <a href="https://bsky.app/profile/ewewerban.bsky.social" target="_blank" onclick="playClickSound()" class="glass-card p-5 rounded-2xl text-center hover:scale-105 transition-all hover:shadow-xl group border border-stone-200 flex flex-col items-center justify-center">
                     <svg class="w-10 h-10 fill-current text-sky-500 mb-2 group-hover:scale-110 transition-transform" viewBox="0 0 566 500">
                         <path d="M121.8 32.2c89.1 66.8 162.5 201.2 161.2 201.2S356.4 99 445.5 32.2C509.7-15.8 566 21 566 98.7c0 15.5-3.8 126.8-16.5 172.1-15.8 56.4-73.6 70.8-124.9 62.4 90 15.8 113 78.4 63.3 129.8-94.5 97.8-192.5-24.5-204.6-116.6-12.1 92.1-110.1 214.4-204.6 116.6-49.7-51.4-26.7-114 63.3-129.8-51.3 8.4-109.1-6-124.9-62.4C3.8 225.5 0 114.2 0 98.7 0 21 56.3-15.8 121.8 32.2z"/>
@@ -242,10 +229,10 @@
                     <div class="text-xs text-stone-500 font-bold">@ewewerban</div>
                 </a>
 
-                <!-- itch.io SVG Icon -->
+                <!-- Official itch.io Controller SVG Icon -->
                 <a href="https://ewewerban.itch.io" target="_blank" onclick="playClickSound()" class="glass-card p-5 rounded-2xl text-center hover:scale-105 transition-all hover:shadow-xl group border border-stone-200 flex flex-col items-center justify-center">
-                    <svg class="w-10 h-10 fill-current text-red-500 mb-2 group-hover:scale-110 transition-transform" viewBox="0 0 24.5 24">
-                        <path d="M3.13 3C2.5 3 2 .5 2 1.13v1.8c0 .28.1.53.28.72l3.43 3.44c.38.38 1.02.38 1.4 0l1.45-1.45c.38-.38.38-1.02 0-1.4L5.12 3.8C4.94 3.62 4.7 3.5 4.4 3.5H3.13zM20.87 3h-1.28c-.3 0-.54.12-.72.3l-3.44 3.44c-.38.38-.38 1.02 0 1.4l1.45 1.45c.38.38 1.02.38 1.4 0l3.44-3.44c.18-.19.28-.44.28-.72V4.13C22 3.5 21.5 3 20.87 3zM12 8.5c-3.04 0-5.5 2.46-5.5 5.5s2.46 5.5 5.5 5.5 5.5-2.46 5.5-5.5-2.46-5.5-5.5-5.5zm0 2c1.93 0 3.5 1.57 3.5 3.5s-1.57 3.5-3.5 3.5-3.5-1.57-3.5-3.5 1.57-3.5 3.5-3.5z"/>
+                    <svg class="w-11 h-10 fill-current text-[#fa5c5c] mb-2 group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                        <path d="M3.204 3C2.392 3 1.8 3.593 1.8 4.404v.932a3.84 3.84 0 0 0 1.286 2.85l.132.118a3.843 3.843 0 0 0 2.54 1.026 3.843 3.843 0 0 0 2.542-1.026l.132-.118a3.84 3.84 0 0 0 1.286-2.85V4.404C9.718 3.593 9.126 3 8.314 3H3.204zm12.482 0c-.812 0-1.404.593-1.404 1.404v.932a3.84 3.84 0 0 0 1.286 2.85l.132.118a3.843 3.843 0 0 0 2.54 1.026 3.843 3.843 0 0 0 2.542-1.026l.132-.118a3.84 3.84 0 0 0 1.286-2.85V4.404C22.2 3.593 21.608 3 20.796 3h-5.11zm-11.83 8.528A4.898 4.898 0 0 0 1.2 13.98v5.616c0 1.328.98 2.404 2.308 2.404h17.038c1.328 0 2.254-1.076 2.254-2.404V13.98a4.898 4.898 0 0 0-2.656-2.452l-2.493 2.585a2.406 2.406 0 0 1-3.328 0L12 11.666l-2.323 2.447a2.406 2.406 0 0 1-3.328 0l-2.493-2.585zm4.846 3.12h1.616v1.616H8.702v1.615H7.086v-1.615H5.47v-1.616h1.616v-1.615h1.616v1.615zm6.592 0a.808.808 0 1 1 0 1.616.808.808 0 0 1 0-1.616zm2.424 1.616a.808.808 0 1 1 0 1.615.808.808 0 0 1 0-1.615z"/>
                     </svg>
                     <div class="font-extrabold text-stone-900 text-sm">itch.io</div>
                     <div class="text-xs text-stone-500 font-bold">ewewerban</div>
